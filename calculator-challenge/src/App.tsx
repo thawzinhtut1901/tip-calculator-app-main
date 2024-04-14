@@ -6,7 +6,7 @@ import Form from './components/Form'
 
 
 function App() {
-  const [bill, setBill ] = useState(0);
+  const [bill, setBill ] = useState("");
   const [tip, setTip ] = useState(0);
   const [people, setPeople] = useState("");
   const [calculatedTip, setCalculatedTip ] = useState(0);
@@ -14,14 +14,14 @@ function App() {
   
 
   useEffect(() => {
-    if(bill > 0 && people > "0" && tip > 0){
-      setCalculatedTip(bill * (tip / 100)); 
-      setTotal(calculatedTip + bill); 
+    if(bill > "0" && people > "0" && tip > 0){
+      setCalculatedTip(parseInt(bill) * (tip / 100)); 
+      setTotal(parseInt( calculatedTip + bill)); 
     }
   }, [bill, people, tip, calculatedTip]);
 
   const handleResetBtn = () => {
-    setBill(0);
+    setBill("");
     setTip(0);
     setPeople("");
     setCalculatedTip(0);
